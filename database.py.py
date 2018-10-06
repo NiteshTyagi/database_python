@@ -26,7 +26,19 @@ db=sql.connect('firstdatabase.db')
 cursor=db.cursor()
 cursor.execute("create table firsttable(ID integer,Name text)")
 
-#Similarly for other queries
+''' for insert data into the table ,there are 2 ways:
+1.? placeholder
+2.using python tuple  and  keyname placeholder'''
+
+id1=1
+Name1="Nitesh"
+
+id2=2
+Name2="Tyagi"
+
+cursor.execute("insert into firsttable(ID,Name) values(?,?)",(id1,Name1)) #By using ? placeholder
+
+cursor.execute('insert into firsttable(ID,Name) values(:id,:Name)',{'id':id2,'Name':Name2})
 
 
 # ###                          Now at last don't forget to add commit() command .
